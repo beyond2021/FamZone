@@ -17,6 +17,9 @@
 		226C2D2C25F3E0B00061BE0D /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226C2D2B25F3E0B00061BE0D /* FriendViewController.swift */; };
 		226C2D2F25F3E9540061BE0D /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226C2D2E25F3E9540061BE0D /* TextTableViewCell.swift */; };
 		226C2D3225F4438F0061BE0D /* Int-TimeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226C2D3125F4438F0061BE0D /* Int-TimeFormatting.swift */; };
+		226C2D3525F538250061BE0D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226C2D3425F538250061BE0D /* Coordinator.swift */; };
+		226C2D3825F539F10061BE0D /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226C2D3725F539F10061BE0D /* MainCoordinator.swift */; };
+		226C2D3B25F53BCB0061BE0D /* Storeboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226C2D3A25F53BCB0061BE0D /* Storeboarded.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		226C2D2B25F3E0B00061BE0D /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		226C2D2E25F3E9540061BE0D /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		226C2D3125F4438F0061BE0D /* Int-TimeFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int-TimeFormatting.swift"; sourceTree = "<group>"; };
+		226C2D3425F538250061BE0D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		226C2D3725F539F10061BE0D /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		226C2D3A25F53BCB0061BE0D /* Storeboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storeboarded.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,10 @@
 		226C2D1225F3D15F0061BE0D /* FamZone */ = {
 			isa = PBXGroup;
 			children = (
+				226C2D3425F538250061BE0D /* Coordinator.swift */,
+				226C2D3725F539F10061BE0D /* MainCoordinator.swift */,
+				226C2D3A25F53BCB0061BE0D /* Storeboarded.swift */,
+				226C2D3E25F54BBB0061BE0D /* Coordinators */,
 				226C2D1325F3D15F0061BE0D /* AppDelegate.swift */,
 				226C2D1525F3D15F0061BE0D /* SceneDelegate.swift */,
 				226C2D2E25F3E9540061BE0D /* TextTableViewCell.swift */,
@@ -77,6 +87,13 @@
 				226C2D2125F3D1830061BE0D /* Info.plist */,
 			);
 			path = FamZone;
+			sourceTree = "<group>";
+		};
+		226C2D3E25F54BBB0061BE0D /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,12 +166,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226C2D3525F538250061BE0D /* Coordinator.swift in Sources */,
 				226C2D2F25F3E9540061BE0D /* TextTableViewCell.swift in Sources */,
 				226C2D1825F3D15F0061BE0D /* ViewController.swift in Sources */,
 				226C2D1425F3D15F0061BE0D /* AppDelegate.swift in Sources */,
 				226C2D1625F3D15F0061BE0D /* SceneDelegate.swift in Sources */,
+				226C2D3B25F53BCB0061BE0D /* Storeboarded.swift in Sources */,
 				226C2D2925F3D3FE0061BE0D /* Friend.swift in Sources */,
 				226C2D2C25F3E0B00061BE0D /* FriendViewController.swift in Sources */,
+				226C2D3825F539F10061BE0D /* MainCoordinator.swift in Sources */,
 				226C2D3225F4438F0061BE0D /* Int-TimeFormatting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,16 +7,16 @@
 
 import UIKit
 
-class FriendViewController: UITableViewController {
-    ///Properties
-    //1:reference back to previous table view controller so we can use back as a delegate
-    weak var delegate: ViewController?
+class FriendViewController: UITableViewController, Storeboarded {
+    ///Propert
     //2: the selected friend to be edited
     var friend: Friend!
     //3: An array of timezones
     var timeZones = [TimeZone]()
     //4: Index of timezone that is selected. start at the first one
     var selectedTimeZone = 0
+    //5: Coordinator link
+    weak var coordinator: MainCoordinator?
     
     
     
@@ -78,7 +78,7 @@ class FriendViewController: UITableViewController {
     // when the vc will go away update the parent
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        delegate?.updateFriend(friend: friend)
+       coordinator?.updateFriend(friend: friend)
     }
     @IBAction func nameChanged(_ sender: UITextField) {
         friend.name = sender.text ?? " "

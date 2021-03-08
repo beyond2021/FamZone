@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class ViewController: UITableViewController, Storeboarded {
+    weak var coordinator: MainCoordinator?
     var friends = [Friend]()
     var selectedFriend: Int? = nil // PASSING DATA called in configure friend
 
@@ -28,18 +29,15 @@ class ViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let friend = friends[indexPath.row]
         cell.textLabel?.text = friend.name
-        // will be made multiple times so take out of here
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = friend.timeZone
         dateFormatter.timeStyle = .short
-        
-//        cell.detailTextLabel?.text = friend.timeZone.identifier
         cell.detailTextLabel?.text = dateFormatter.string(from: Date())
         return cell
     }
-    // cell tapped
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        configureFriend(friend: friends[indexPath.row], position: indexPath.row)
+        selectedFriend = indexPath.row
+        coordinator?.configureFriend(friend: friends[indexPath.row])
     }
     
     func loadData() {
@@ -49,6 +47,8 @@ class ViewController: UITableViewController {
         guard let savedFriends = try?decoder.decode([Friend].self, from: savedData) else { return}
         friends = savedFriends
     }
+    
+
     
     func saveData() {
         let defaults = UserDefaults.standard
@@ -68,38 +68,19 @@ class ViewController: UITableViewController {
         tableView.insertRows(at: [IndexPath(row: friends.count - 1, section: 0)], with: .automatic)
         saveData()
         /// call configure
-        configureFriend(friend: friend, position: friends.count - 1)
+        selectedFriend = friends.count - 1
+        coordinator?.configureFriend(friend: friend)
     }
-    
-    //PASSING DATA TRACK FRIEND friend 5 pos 0 etc
-    ///Method to configure a friend, psition where this came from. need to replace previous friend with the modified friand
-    func configureFriend(friend: Friend, position: Int) {
-        //1: create a friend view controller
-        guard let vc = storyboard?.instantiateViewController(identifier: "FriendViewController") as? FriendViewController else {
-            fatalError("Unable to create FriendViewController.") // should never fail bale out and die
-        }
-        //Selected friend position
-        selectedFriend = position
-        //good
-        vc.delegate = self
-        //Friend editing
-        vc.friend = friend
-        //push on to the stack so it can shown on the screen
-        navigationController?.pushViewController(vc, animated: true)
-    }
-
+ 
     
     //:- Update the friend when its changed
     func updateFriend(friend: Friend) {
-        //1: make sure selected friend has a value
         guard let selectedFriend = selectedFriend else { return }
-        //2: replace the item
         friends[selectedFriend] = friend
-        //3:
+        tableView.reloadData()
         saveData()
-        //4;
-        tableView.reloadData() // because something hase changed in the tableView
+        
     }
-
+  
 }
 
